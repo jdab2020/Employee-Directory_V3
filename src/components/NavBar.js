@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useState}  from "react";
 import { Link, useLocation } from "react-router-dom";
 
-function NavBar() {
+
+function NavBar(props) {
 
     const location = useLocation();
+    const handleSubmit = event => event.preventDefault();
 
     return (
 
@@ -33,16 +35,14 @@ function NavBar() {
                     Add new employee
                 </Link>
             </li>
-            <form className="form-inline my-2 my-lg-0">
-                <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                <button className="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+            <form className="form-inline my-2 my-lg-0" onSubmit={handleSubmit}>
+                <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" 
+                onChange = {event => props.setSearch({ name:event.target.value})}
+                />
+                {/* <button className="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button> */}
             </form>
         </ul>
     )
 }
 
 export default NavBar;
-
-{/* <nav className="navbar navbar-light" style={{ backgroundColor: "teal" }}>
-                <span className="navbar-brand mb-0 h1">Mahouka Koukou no Rettousei</span>
-            </nav> */}

@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import InfoCard from "../InfoCard"
 import employeesData from "../../employee.js"
 
-function Home() {
+function Home(props) {
+    console.log(props.search)
     function compare(a, b) {
         let nameA = a.name.toUpperCase();
         let nameB = b.name.toUpperCase();
@@ -16,8 +17,18 @@ function Home() {
         return comparison;
     }
 
-    const employee = employeesData.sort(compare).map(employee =>
-        <InfoCard key={employee.id} employee={employee} />)
+    // const employee = employeesData.sort(compare).map(employee =>
+    //     <InfoCard key={employee.id} employee={employee} />)
+    let employee;
+
+
+    if (props.search !=="") {
+        employee = employeesData.filter(employee => 
+            <InfoCard employee={employee.name.toLowerCase().includes(props.search)} key={employee.id}/>)
+    } else {
+        employee = employeesData.sort(compare).map(employee =>
+            <InfoCard key={employee.id} employee={employee} />)
+    }
 
     return (
         <div style={{ backgroundColor: "teal" }} className="row">
