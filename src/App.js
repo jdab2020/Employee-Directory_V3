@@ -19,10 +19,7 @@ function App() {
             <div>
                 <NavBar search={search} setSearch={setSearch}/>
                 {/* <Route exact path="/" component={Home} search={search} /> */}
-                <Route
-                    exact path="/"
-                    render={(props) => <Home {...props} search={search} />}
-                />
+                <Route exact path="/" render={(props) => <Home {...props} search={search} />} />
                 <Route exact path="/home" component={Home} search={search} />
                 <Route exact path="/department" component={Department} search={search} />
                 <Route exact path="/role" component={Role} search={search} />
