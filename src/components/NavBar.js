@@ -7,8 +7,12 @@ import FilteredContext from "../contexts/FilteredContext"
 
 function NavBar(props) {
     const onePerson = useContext(FilteredContext)
+    console.log(onePerson.filter,"==========one person========")
+    // if (onePerson) {
+    //     props.setFiltered()
+    //     console.log(onePerson.filter,"==========one person inside if===========")
+    // }
     const data = useContext(SearchContext)
-    // console.log(onePerson.filter,"==========one person========")
     // console.log(props)
     // console.log(props.setSearch)
     // console.log(props.setFiltered)
@@ -29,27 +33,32 @@ function NavBar(props) {
 
         <ul className="nav nav-tabs nav-pills nav-fill bg-light">
             <li className="nav-item">
-                <Link to="/home" className={location.pathname === "/home" ? "nav-link active" : "nav-link"}>
+                <Link to="/home" className={location.pathname === "/home" ? "nav-link active" : "nav-link"} 
+                    onClick={event => props.setFiltered({})}>
                     Home
                 </Link>
             </li>
             <li className="nav-item">
-                <Link to="/department" className={location.pathname === "/department" ? "nav-link active" : "nav-link"}>
+                <Link to="/department" className={location.pathname === "/department" ? "nav-link active" : "nav-link"}
+                    onClick={event => props.setFiltered({})}>
                     Department
                 </Link>
             </li>
             <li className="nav-item">
-                <Link to="/role" className={location.pathname === "/role" ? "nav-link active" : "nav-link"}>
+                <Link to="/role" className={location.pathname === "/role" ? "nav-link active" : "nav-link"}
+                    onClick={event => props.setFiltered({})}>
                     Role
                 </Link>
             </li>
             <li className="nav-item">
-                <Link to="/damage" className={location.pathname === "/damage" ? "nav-link active" : "nav-link"}>
+                <Link to="/damage" className={location.pathname === "/damage" ? "nav-link active" : "nav-link"}
+                    onClick={event => props.setFiltered({})}>
                     Damage
                 </Link>
             </li>
             <li className="nav-item">
-                <Link to="/add" className={location.pathname === "/add" ? "nav-link active" : "nav-link"}>
+                <Link to="/add" className={location.pathname === "/add" ? "nav-link active" : "nav-link"}
+                    onClick={event => props.setFiltered({})}>
                     Add new employee
                 </Link>
             </li>

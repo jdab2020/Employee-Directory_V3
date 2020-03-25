@@ -28,7 +28,7 @@ function Home(props) {
         let employee = filtered.filter
         console.log(employee, "========employee insede search profile ==========")
         console.log(employee[0])
-        searchProfile = <InfoCard employee={employee[0]} />
+        searchProfile = employee.map(employee => <InfoCard key={employee.id} employee={employee} />)
         console.log(searchProfile)
     }
 

@@ -24,9 +24,6 @@ function App() {
         }
     )
 
-    // function handleChange(newValue){
-    //     setSearch(newValue)
-    // }
     return (
 
         <Router>
