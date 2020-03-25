@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import employeesData from "../../employee";
 import InfoCard from "../InfoCard";
+import FilteredContext from "../../contexts/FilteredContext";
 
-function Role () {
-    function compare (a,b) {
+function Role() {
+    const filtered = useContext(FilteredContext)
+    function compare(a, b) {
         let roleA = a.role.toUpperCase();
         let roleB = b.role.toUpperCase();
 
@@ -16,12 +18,18 @@ function Role () {
         return comparison;
     }
 
-    const employee = employeesData.sort(compare).map(employee => 
+    const employee = employeesData.sort(compare).map(employee =>
         <InfoCard key={employee.id} employee={employee} />)
+
+    let searchProfile;
+    if (filtered.filter) {
+        let employee = filtered.filter
+        searchProfile = <InfoCard employee={employee[0]} />
+    }
 
     return (
         <div style={{ backgroundColor: "teal" }} className="row">
-            {employee}
+            {!searchProfile ? employee : searchProfile}
         </div>
     )
 }
