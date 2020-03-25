@@ -24,7 +24,7 @@ function Department(props) {
     let searchProfile;
     if (filtered.filter) {
         let employee = filtered.filter
-        searchProfile = <InfoCard employee={employee[0]} />
+        searchProfile = employee.map(employee => <InfoCard key={employee.id} employee={employee} />)
     }
 
     return (
